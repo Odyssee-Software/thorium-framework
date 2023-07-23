@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2016",
+    "declaration": true,
+    "sourceMap": true,
+    "removeComments": false,
+    "preserveConstEnums" : true,
+    "skipLibCheck": true,
+    "moduleResolution":"node",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "noImplicitAny": false
+  },
+  "include": [
+    "./src/**/*",
+    "/Users/guillaume/Documents/Thorium/thorium-core",
+    "/Users/guillaume/Documents/Thorium/thorium-states"
+  ],
+  "exclude": [
+    "./node_modules",
+    "*/samples",
+    "*/tests",
+    "/Users/guillaume/Documents/Thorium/thorium-core/test",
+  ]
+}
