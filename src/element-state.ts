@@ -1,5 +1,5 @@
-import { useState , State} from "/Users/guillaume/Documents/Thorium/thorium-states";
-import { ConnectorTemplate , NodeTemplate } from "/Users/guillaume/Documents/Thorium/thorium-core";
+import { useState , State} from "../../thorium-states/src";
+import { ConnectorTemplate , NodeTemplate } from "../../thorium-core/src";
 
 export const elementState = <T>(data:any):[State<T>,(value:T) => T,(template?:(ConnectorTemplate<HTMLParagraphElement>  & {localName? : 'span' | 'input'})) => NodeTemplate<HTMLSpanElement>] => {
 

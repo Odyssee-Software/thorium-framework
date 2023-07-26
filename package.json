@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dom-cssom": "^1.1.1",
+    "html-tags": "^3.3.1",
+    "json-to-css": "^0.1.0",
+    "route-recognizer": "^0.3.4",
     "typescript": "^5.1.3"
   }
 }

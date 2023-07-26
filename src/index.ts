@@ -1,6 +1,6 @@
-import Core , { DOM } from "/Users/guillaume/Documents/Thorium/thorium-core";
-export * from "/Users/guillaume/Documents/Thorium/thorium-core";
-export * from "/Users/guillaume/Documents/Thorium/thorium-states";
+import Core , { DOM } from "../../thorium-core/src";
+export * from "../../thorium-core/src";
+export * from "../../thorium-states/src";
 export * from './element-state';
 export * from './app-context';
 export * from './root-context';

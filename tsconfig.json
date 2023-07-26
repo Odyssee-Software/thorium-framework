@@ -14,13 +14,13 @@
   },
   "include": [
     "./src/**/*",
-    "/Users/guillaume/Documents/Thorium/thorium-core",
-    "/Users/guillaume/Documents/Thorium/thorium-states"
+    "../thorium-core",
+    "../thorium-states"
   ],
   "exclude": [
     "./node_modules",
     "*/samples",
     "*/tests",
-    "/Users/guillaume/Documents/Thorium/thorium-core/test",
+    "../thorium-core/test",
   ]
 }
