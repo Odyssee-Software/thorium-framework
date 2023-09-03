@@ -39,14 +39,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getStyleSheet = exports.createStyleSheet = exports.style = exports.StyleSheets = void 0;
 const postcss_1 = __importDefault(require("postcss"));
-const autoprefixer = require("autoprefixer");
+const autoprefixer_1 = __importDefault(require("autoprefixer"));
+// import autoprefixer = require('autoprefixer');
 const ObjectCSS = __importStar(require("json-to-css"));
 exports.StyleSheets = new Map();
 const style = (cssObject) => __awaiter(void 0, void 0, void 0, function* () {
     let s = ObjectCSS.of(cssObject);
     // let css:CssPatern = CSSOM(cssObject);
     return new Promise((next) => {
-        (0, postcss_1.default)([autoprefixer])
+        (0, postcss_1.default)([autoprefixer_1.default])
             .process(s, { from: undefined })
             .then(result => {
             result.token = crypto.randomUUID();
