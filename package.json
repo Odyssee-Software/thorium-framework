@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^10.4.15",
     "dom-cssom": "^1.1.1",
     "html-tags": "^3.3.1",
     "json-to-css": "^0.1.0",
