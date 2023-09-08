@@ -15,6 +15,8 @@ const __1 = require("../..");
 */
 const DOMRender = (template, parentNode) => {
     console.log(parentNode);
+    if (!template)
+        return;
     // Vérifie si le template est local
     let isLocal = (template && template.localName && template.localName.includes('local-') ? true : false);
     // Crée un nouvel élément DOM en fonction du template
