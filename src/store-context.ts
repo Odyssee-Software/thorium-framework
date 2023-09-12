@@ -1,4 +1,4 @@
-import { useState , State } from "../../thorium-states/src";
+import { useState , State } from "thorium-states";
 
 export type TStoreStateToken = `${string}-${string}-${string}-${string}-${string}`;
 

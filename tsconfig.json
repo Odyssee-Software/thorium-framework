@@ -14,8 +14,8 @@
   },
   "include": [
     "./src/**/*",
-    "../thorium-core",
-    "../thorium-states"
+    // "../thorium-core",
+    // "../thorium-states"
   ],
   "exclude": [
     "./node_modules",

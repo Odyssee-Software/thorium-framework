@@ -2,7 +2,7 @@
   "name": "thorium-framework",
   "version": "1.0.3",
   "description": "",
-  "main": "./dist/thorium-framework/src/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,8 @@
     "html-tags": "^3.3.1",
     "json-to-css": "^0.1.0",
     "route-recognizer": "^0.3.4",
+    "thorium-core": "file:thorium-core",
+    "thorium-states": "file:thorium-states",
     "typescript": "^5.1.3"
   }
 }

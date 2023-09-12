@@ -1,4 +1,4 @@
-import { useState , State } from "../../thorium-states/src";
+import { useState , State } from "thorium-states";
 import { StoreContext , TStoreContext } from './store-context';
 
 const [ rootContextState , setRootContext ] = useState<TStoreContext>( new class RootContext extends StoreContext{

@@ -1,0 +1,6 @@
+[submodule "thorium-states"]
+	path = thorium-states
+	url = ./thorium-states
+[submodule "thorium-core"]
+	path = thorium-core
+	url = ./thorium-core
