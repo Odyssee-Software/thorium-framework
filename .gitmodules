@@ -4,3 +4,12 @@
 [submodule "thorium-core"]
 	path = thorium-core
 	url = ./thorium-core
+[submodule "modules/context"]
+	path = modules/context
+	url = https://github.com/Odyssee-Software/thorium-store-context.git
+[submodule "modules/states"]
+	path = modules/states
+	url = https://github.com/Odyssee-Software/thorium-states.git
+[submodule "modules/core"]
+	path = modules/core
+	url = https://github.com/Odyssee-Software/thorium-core.git
