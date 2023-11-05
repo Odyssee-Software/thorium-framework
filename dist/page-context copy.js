@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.pageContext = void 0;
 const dist_1 = require("../modules/states/dist");
-const x_store_context_1 = require("./x.store-context");
+const store_context_1 = require("./store-context");
 /** The code is using the `useState` hook from the `thorium-states` library to create a state variable
 called `pageContextState` and a function called `setPageContext` to update that state variable. The
 initial value of `pageContextState` is an instance of a class `PageContext` that extends
 `StoreContext`. The type of `pageContextState` is specified as `TStoreContext`. */
-const [pageContextState, setPageContext] = (0, dist_1.useState)(new class PageContext extends x_store_context_1.StoreContext {
+const [pageContextState, setPageContext] = (0, dist_1.useState)(new class PageContext extends store_context_1.StoreContext {
 }());
 /**
  * The function `pageContextUpdate` displays an alert message with the text "value update".
@@ -29,4 +29,4 @@ pageContextState.subscribe(document.body, pageContextUpdate);
  */
 const pageContext = () => { return pageContextState.value; };
 exports.pageContext = pageContext;
-//# sourceMappingURL=page-context.js.map
+//# sourceMappingURL=page-context%20copy.js.map

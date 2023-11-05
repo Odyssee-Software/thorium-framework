@@ -1,4 +1,4 @@
-import { StoreContext } from './x.store-context';
+import { StoreContext } from './store-context';
 /**
  * The above function returns the value of the appContextState.
  * @returns The appContextState.value is being returned.

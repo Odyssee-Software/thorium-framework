@@ -26,14 +26,15 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.pageContext = exports.applicationContext = exports.rootContext = void 0;
 const thorium_core_1 = __importStar(require("thorium-core"));
 __exportStar(require("thorium-core"), exports);
 __exportStar(require("thorium-states"), exports);
 __exportStar(require("./element-state"), exports);
-__exportStar(require("./app-context"), exports);
-__exportStar(require("./root-context"), exports);
-__exportStar(require("./page-context"), exports);
-__exportStar(require("./store-context"), exports);
+var thorium_store_context_1 = require("thorium-store-context");
+Object.defineProperty(exports, "rootContext", { enumerable: true, get: function () { return thorium_store_context_1.rootContext; } });
+Object.defineProperty(exports, "applicationContext", { enumerable: true, get: function () { return thorium_store_context_1.applicationContext; } });
+Object.defineProperty(exports, "pageContext", { enumerable: true, get: function () { return thorium_store_context_1.pageContext; } });
 var Thorium;
 (function (Thorium) {
     Thorium.version = '2.0.0';

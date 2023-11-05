@@ -1,4 +1,4 @@
-import { useState , State} from "thorium-states";
+import { useState , State} from "../modules/states/dist";
 import { ConnectorTemplate , NodeTemplate } from "thorium-core";
 
 export const elementState = <T>(data:any):[State<T>,(value:T) => T,(template?:(ConnectorTemplate<HTMLParagraphElement>  & {localName? : 'span' | 'input'})) => NodeTemplate<HTMLSpanElement>] => {
@@ -19,9 +19,10 @@ export const elementState = <T>(data:any):[State<T>,(value:T) => T,(template?:(C
           if(localName == 'span')target.textContent = state.value as string;
           if(localName == 'input')(target as HTMLInputElement).value = state.value as string;
 
-          state.subscribe( target , (value) => {
+          state.subscribe( target , (value:any) => {
             if(localName == 'span')target.textContent = `${value}`;
             if(localName == 'input')(target as HTMLInputElement).value = `${value}`;
+            return null;
           } )
 
         }

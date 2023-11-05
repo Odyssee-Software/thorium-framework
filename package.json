@@ -14,8 +14,9 @@
     "html-tags": "^3.3.1",
     "json-to-css": "^0.1.0",
     "route-recognizer": "^0.3.4",
-    "thorium-core": "file:thorium-core",
-    "thorium-states": "file:thorium-states",
+    "thorium-core": "file:modules/core",
+    "thorium-states": "file:modules/states",
+    "thorium-store-context": "file:modules/context",
     "typescript": "^5.1.3"
   }
 }

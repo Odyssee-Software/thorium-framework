@@ -2,10 +2,7 @@ import Core , { DOM } from "thorium-core";
 export * from "thorium-core";
 export * from "thorium-states";
 export * from './element-state';
-export * from './app-context';
-export * from './root-context';
-export * from './page-context';
-export * from './store-context';
+export { rootContext , applicationContext , pageContext } from "thorium-store-context";
 
 
 namespace Thorium{

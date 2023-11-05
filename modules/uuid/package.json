@@ -1,0 +1,11 @@
+{
+  "name": "thorium-huid",
+  "version": "1.0.0",
+  "description": "Le projet **`States`** implémente une solution pour gérer l'état global d'une application JavaScript en utilisant la notion d'objets immuables. Cela signifie que lorsque vous voulez mettre à jour l'état de votre application, vous devez en créer une nouvelle instance au lieu de simplement le modifier. Cela peut aider à garantir la stabilité de l'application et faciliter le débogage et le développement.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

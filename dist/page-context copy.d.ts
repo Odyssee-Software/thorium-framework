@@ -1,4 +1,4 @@
-import { StoreContext } from './x.store-context';
+import { StoreContext } from './store-context';
 /**
  * The function returns the value of the page context state.
  * @returns The value of the `pageContextState.value` variable.
