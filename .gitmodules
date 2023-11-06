@@ -15,4 +15,4 @@
 	url = https://github.com/Odyssee-Software/thorium-core.git
 [submodule "modules/huid"]
 	path = modules/huid
-	url = https://github.com/Odyssee-Software/thorim-uuid.git
+	url = https://github.com/Odyssee-Software/thorium-uuid.git
