@@ -26,22 +26,25 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pageContext = exports.applicationContext = exports.rootContext = void 0;
+exports.uuid = exports.pageContext = exports.applicationContext = exports.rootContext = exports.useState = void 0;
 const thorium_core_1 = __importStar(require("thorium-core"));
-__exportStar(require("thorium-core"), exports);
-__exportStar(require("thorium-states"), exports);
-__exportStar(require("./element-state"), exports);
-var thorium_store_context_1 = require("thorium-store-context");
-Object.defineProperty(exports, "rootContext", { enumerable: true, get: function () { return thorium_store_context_1.rootContext; } });
-Object.defineProperty(exports, "applicationContext", { enumerable: true, get: function () { return thorium_store_context_1.applicationContext; } });
-Object.defineProperty(exports, "pageContext", { enumerable: true, get: function () { return thorium_store_context_1.pageContext; } });
+const Context = __importStar(require("thorium-store-context"));
+const thorium_store_context_1 = require("thorium-store-context");
+const UUID = __importStar(require("thorium-huid"));
 var Thorium;
 (function (Thorium) {
     Thorium.version = '2.0.0';
     Thorium.core = Object.assign({}, thorium_core_1.default);
+    Thorium.context = Context;
+    Thorium.uuid = UUID;
     if ('thorium' in window == false)
         window['thorium'] = Thorium;
 })(Thorium || (Thorium = {}));
+const useState = (key, value) => {
+    console.log('useState');
+    return (0, thorium_store_context_1.rootContext)().set(key, value);
+};
+exports.useState = useState;
 const renderPage = () => {
     let { location } = window;
     let { hash } = location;
@@ -70,5 +73,14 @@ window.onload = () => {
     if (thorium_core_1.DOM.onload)
         thorium_core_1.DOM.onload();
 };
+__exportStar(require("thorium-core"), exports);
+__exportStar(require("thorium-states"), exports);
+__exportStar(require("./element-state"), exports);
+var thorium_store_context_2 = require("thorium-store-context");
+Object.defineProperty(exports, "rootContext", { enumerable: true, get: function () { return thorium_store_context_2.rootContext; } });
+Object.defineProperty(exports, "applicationContext", { enumerable: true, get: function () { return thorium_store_context_2.applicationContext; } });
+Object.defineProperty(exports, "pageContext", { enumerable: true, get: function () { return thorium_store_context_2.pageContext; } });
+var thorium_huid_1 = require("thorium-huid");
+Object.defineProperty(exports, "uuid", { enumerable: true, get: function () { return thorium_huid_1.uuid; } });
 exports.default = Thorium;
 //# sourceMappingURL=index.js.map
