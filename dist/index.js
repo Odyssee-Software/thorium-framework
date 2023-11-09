@@ -31,6 +31,8 @@ const thorium_core_1 = __importStar(require("thorium-core"));
 const Context = __importStar(require("thorium-store-context"));
 const thorium_store_context_1 = require("thorium-store-context");
 const UUID = __importStar(require("thorium-huid"));
+/* The `namespace Thorium` block is defining a namespace called `Thorium` and exporting it. Within this
+namespace, there are several properties defined: */
 var Thorium;
 (function (Thorium) {
     Thorium.version = '2.0.0';
@@ -40,8 +42,16 @@ var Thorium;
     if ('thorium' in window == false)
         window['thorium'] = Thorium;
 })(Thorium || (Thorium = {}));
+/**
+ * The `useState` function is a TypeScript function that sets a value in the root context and returns
+ * the updated state.
+ * @param {string} key - The key parameter is a string that represents the key under which the value
+ * will be stored in the state.
+ * @param {T} value - The `value` parameter is the initial value that you want to set for the state
+ * variable. It can be of any type, as it is defined as a generic type `<T>`.
+ * @returns the value of `rootContext().set(key, value)` casted as `IStoreState<T>`.
+ */
 const useState = (key, value) => {
-    console.log('useState');
     return (0, thorium_store_context_1.rootContext)().set(key, value);
 };
 exports.useState = useState;
@@ -74,7 +84,6 @@ window.onload = () => {
         thorium_core_1.DOM.onload();
 };
 __exportStar(require("thorium-core"), exports);
-__exportStar(require("thorium-states"), exports);
 __exportStar(require("./element-state"), exports);
 var thorium_store_context_2 = require("thorium-store-context");
 Object.defineProperty(exports, "rootContext", { enumerable: true, get: function () { return thorium_store_context_2.rootContext; } });

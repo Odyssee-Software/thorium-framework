@@ -5,6 +5,8 @@ import * as UUID from 'thorium-huid';
 import { StateMutator } from 'thorium-states';
 
 
+/* The `namespace Thorium` block is defining a namespace called `Thorium` and exporting it. Within this
+namespace, there are several properties defined: */
 namespace Thorium{
 
   export const version = '2.0.0';
@@ -16,8 +18,16 @@ namespace Thorium{
 
 }
 
+/**
+ * The `useState` function is a TypeScript function that sets a value in the root context and returns
+ * the updated state.
+ * @param {string} key - The key parameter is a string that represents the key under which the value
+ * will be stored in the state.
+ * @param {T} value - The `value` parameter is the initial value that you want to set for the state
+ * variable. It can be of any type, as it is defined as a generic type `<T>`.
+ * @returns the value of `rootContext().set(key, value)` casted as `IStoreState<T>`.
+ */
 export const useState = <T>( key:string , value:T ) => {
-  console.log( 'useState' )
   return rootContext().set( key , value ) as IStoreState<T>;
 }
 
@@ -62,7 +72,6 @@ window.onload = () => {
 }
 
 export * from "thorium-core";
-export * from "thorium-states";
 export * from './element-state';
 export { 
   rootContext , 
