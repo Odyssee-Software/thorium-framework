@@ -26,11 +26,13 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.uuid = exports.pageContext = exports.applicationContext = exports.rootContext = exports.useState = void 0;
+exports.uuid = exports.pageContext = exports.applicationContext = exports.rootContext = exports.pages = exports.useState = exports.preload = void 0;
 const thorium_core_1 = __importStar(require("thorium-core"));
 const Context = __importStar(require("thorium-store-context"));
 const thorium_store_context_1 = require("thorium-store-context");
 const UUID = __importStar(require("thorium-huid"));
+const preload_1 = require("./preload");
+Object.defineProperty(exports, "preload", { enumerable: true, get: function () { return preload_1.preload; } });
 /* The `namespace Thorium` block is defining a namespace called `Thorium` and exporting it. Within this
 namespace, there are several properties defined: */
 var Thorium;
@@ -52,9 +54,11 @@ var Thorium;
  * @returns the value of `rootContext().set(key, value)` casted as `IStoreState<T>`.
  */
 const useState = (key, value) => {
-    return (0, thorium_store_context_1.rootContext)().set(key, value);
+    return (0, thorium_store_context_1.applicationContext)().set(key, value);
 };
 exports.useState = useState;
+let _onRenderPage = null;
+let _onHashChange = null;
 const renderPage = () => {
     let { location } = window;
     let { hash } = location;
@@ -63,6 +67,8 @@ const renderPage = () => {
     let route = pages.recognize(`/${baseHash}`);
     if (route && route.length > 0) {
         let baseRouteHandler = route[0];
+        if (_onRenderPage)
+            _onRenderPage();
         return baseRouteHandler.handler();
     }
 };
@@ -71,17 +77,44 @@ const onHashChange = () => {
     let f = thorium_core_1.DOM.virtual.getElementByElementId(currentPageId);
     if (f)
         f.remove();
+    if (_onHashChange)
+        _onHashChange();
     currentPageId = renderPage();
 };
+function pages() {
+    let { pages } = thorium_core_1.default;
+    return new Proxy(pages, {
+        get(target, key) {
+            if (target[key])
+                return target[key];
+            else if (key == 'onHashChange')
+                return _onHashChange;
+            else if (key == 'onRenderPage')
+                return _onRenderPage;
+        },
+        set(target, key, value) {
+            if (key == 'onHashChange') {
+                _onHashChange = value;
+            }
+            else if (key == 'onRenderPage') {
+                _onRenderPage = value;
+            }
+            return true;
+        }
+    });
+}
+exports.pages = pages;
 window.onload = () => {
     let { location } = window;
     let { hash } = location;
-    currentPageId = renderPage();
-    window.addEventListener("hashchange", onHashChange, false);
-    if (!hash)
-        window.location.hash = '/';
-    if (thorium_core_1.DOM.onload)
-        thorium_core_1.DOM.onload();
+    (0, preload_1.preload)().execute().then(() => {
+        currentPageId = renderPage();
+        window.addEventListener("hashchange", onHashChange, false);
+        if (!hash)
+            window.location.hash = '/';
+        if (thorium_core_1.DOM.onload)
+            thorium_core_1.DOM.onload();
+    });
 };
 __exportStar(require("thorium-core"), exports);
 __exportStar(require("./element-state"), exports);

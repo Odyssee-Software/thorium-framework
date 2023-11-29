@@ -1,5 +1,8 @@
+import { PageHandler } from "thorium-core";
 import * as Context from 'thorium-store-context';
 import * as UUID from 'thorium-huid';
+import { preload, PreloadStack, PreloadModule } from './preload';
+export { preload, PreloadStack, PreloadModule, };
 declare namespace Thorium {
     const version = "2.0.0";
     const core: any;
@@ -16,6 +19,11 @@ declare namespace Thorium {
  * @returns the value of `rootContext().set(key, value)` casted as `IStoreState<T>`.
  */
 export declare const useState: <T>(key: string, value: T) => Context.IStoreState<T>;
+export interface PagesAPI extends PageHandler {
+    onHashChange(): void;
+    onRenderPage(): void;
+}
+export declare function pages(): PagesAPI;
 export * from "thorium-core";
 export * from './element-state';
 export { rootContext, applicationContext, pageContext } from "thorium-store-context";

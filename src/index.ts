@@ -1,9 +1,15 @@
-import Core , { DOM } from "thorium-core";
+import Core , { DOM, PageHandler } from "thorium-core";
 import * as Context from 'thorium-store-context';
-import { rootContext , IStoreState } from "thorium-store-context";
+import { applicationContext , IStoreState } from "thorium-store-context";
 import * as UUID from 'thorium-huid';
 import { StateMutator } from 'thorium-states';
+import { preload , PreloadStack , PreloadModule } from './preload';
 
+export {
+  preload,
+  PreloadStack,
+  PreloadModule,
+};
 
 /* The `namespace Thorium` block is defining a namespace called `Thorium` and exporting it. Within this
 namespace, there are several properties defined: */
@@ -28,10 +34,14 @@ namespace Thorium{
  * @returns the value of `rootContext().set(key, value)` casted as `IStoreState<T>`.
  */
 export const useState = <T>( key:string , value:T ) => {
-  return rootContext().set( key , value ) as IStoreState<T>;
+  return applicationContext().set( key , value ) as IStoreState<T>;
 }
 
+let _onRenderPage = null;
+let _onHashChange = null;
+
 const renderPage = () => {
+
   let { location } = window;
   let { hash } = location;
   let baseHash = hash.split('/')[1];
@@ -43,17 +53,52 @@ const renderPage = () => {
   if(route && route.length > 0){
 
     let baseRouteHandler = route[0];
+    if(_onRenderPage)_onRenderPage();
     return (baseRouteHandler as unknown as { handler:()=>void }).handler();
 
   }
+
 }
 
 let currentPageId = null;
 
 const onHashChange = () => {
+
   let f = DOM.virtual.getElementByElementId(currentPageId);
   if(f)f.remove();
+  if(_onHashChange)_onHashChange();
   currentPageId = renderPage();
+
+}
+
+export interface PagesAPI extends PageHandler{
+  onHashChange():void;
+  onRenderPage():void;
+}
+
+export function pages():PagesAPI{
+
+  let { pages } = Core;
+
+  return new Proxy( pages as any , {
+    get( target , key ){
+      if(target[key])return target[key];
+      else if(key == 'onHashChange')return _onHashChange;
+      else if(key == 'onRenderPage')return _onRenderPage;
+    },
+    set( target , key , value ){
+
+      if(key == 'onHashChange'){
+        _onHashChange = value;
+      }
+      else if( key == 'onRenderPage' ){
+        _onRenderPage = value;
+      }
+
+      return true;
+    }
+  })
+
 }
 
 window.onload = () => {
@@ -61,13 +106,17 @@ window.onload = () => {
   let { location } = window;
   let { hash } = location;
 
-  currentPageId = renderPage();
+  preload().execute().then(() => {
 
-  window.addEventListener("hashchange", onHashChange , false);
+    currentPageId = renderPage();
 
-  if(!hash)window.location.hash = '/';
+    window.addEventListener("hashchange", onHashChange , false);
+  
+    if(!hash)window.location.hash = '/';
+  
+    if(DOM.onload)DOM.onload();
 
-  if(DOM.onload)DOM.onload();
+  })
 
 }
 
