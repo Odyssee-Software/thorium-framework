@@ -25,8 +25,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
 var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.uuid = exports.pageContext = exports.applicationContext = exports.rootContext = exports.pages = exports.useState = exports.preload = void 0;
+exports.uuid = exports.pageContext = exports.applicationContext = exports.rootContext = exports.pages = exports.useState = exports.preloadStyle = exports.preload = void 0;
 const thorium_core_1 = __importStar(require("thorium-core"));
 const Context = __importStar(require("thorium-store-context"));
 const thorium_store_context_1 = require("thorium-store-context");
@@ -44,6 +53,22 @@ var Thorium;
     if ('thorium' in window == false)
         window['thorium'] = Thorium;
 })(Thorium || (Thorium = {}));
+function preloadStyle(cssObject) {
+    let stylesheetId = UUID.uuid.v4();
+    let { state, setter, subscribe } = (0, exports.useState)(stylesheetId, {});
+    (0, preload_1.preload)().push({
+        main: () => __awaiter(this, void 0, void 0, function* () {
+            return new Promise((next) => {
+                (0, thorium_core_1.DesignSystem)().Stylesheet.create(cssObject)
+                    .then((result) => {
+                    next(setter(result));
+                });
+            });
+        })
+    });
+    return state.mutator[0];
+}
+exports.preloadStyle = preloadStyle;
 /**
  * The `useState` function is a TypeScript function that sets a value in the root context and returns
  * the updated state.

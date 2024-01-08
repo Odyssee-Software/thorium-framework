@@ -1,8 +1,8 @@
-import Core , { DOM, PageHandler } from "thorium-core";
+import Core , { CssObject, DOM, PageHandler, StyleProxy , DesignSystem } from "thorium-core";
 import * as Context from 'thorium-store-context';
 import { applicationContext , IStoreState } from "thorium-store-context";
 import * as UUID from 'thorium-huid';
-import { StateMutator } from 'thorium-states';
+import { StateMutator, TState } from 'thorium-states';
 import { preload , PreloadStack , PreloadModule } from './preload';
 
 export {
@@ -21,6 +21,26 @@ namespace Thorium{
   export const uuid = UUID;
 
   if('thorium' in window == false)window['thorium'] = Thorium;
+
+}
+
+export function preloadStyle< T extends string[] >( cssObject:CssObject<T> ):TState< StyleProxy< T > >{
+  
+  let stylesheetId = UUID.uuid.v4();
+  let { state , setter , subscribe } = useState< any >( stylesheetId , {} );
+
+  preload().push( {
+    main : async () => {
+      return new Promise(( next ) => {
+        DesignSystem().Stylesheet.create< T >( cssObject )
+        .then(( result ) => {
+          next( setter( result ) )
+        })
+      })
+    }
+  } )
+
+  return state.mutator[0];
 
 }
 

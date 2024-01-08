@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "jsx": "preserve",
+    "module": "ES2020",
     "target": "ES2016",
     "declaration": true,
     "sourceMap": true,
@@ -8,13 +9,10 @@
     "preserveConstEnums" : true,
     "skipLibCheck": true,
     "moduleResolution":"node",
-    "outDir": "dist",
-    "esModuleInterop": true,
+    "strict": true,
     "noImplicitAny": false,
-    "baseUrl": "."
+    "baseUrl": ".",
   },
-  "include": [
-    "./src/**/**.ts",
-    "./src/Globals.d.ts",
-  ]
+  "files": ["../src/Globals.d.ts"],
+  "include": ["/src/Globals.d.ts"],
 }

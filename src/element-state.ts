@@ -1,16 +1,16 @@
-import { useState , State} from "../modules/states/dist";
-import { ConnectorTemplate , NodeTemplate } from "thorium-core";
+import { useState , State} from "../modules/states";
+import { IConnectorTemplate , INodeTemplate } from "thorium-core";
 
-export const elementState = <T>(data:any):[State<T>,(value:T) => T,(template?:(ConnectorTemplate<HTMLParagraphElement>  & {localName? : 'span' | 'input'})) => NodeTemplate<HTMLSpanElement>] => {
+export const elementState = <T>(data:any):[State<T>,(value:T) => T,(template?:(IConnectorTemplate<HTMLParagraphElement>  & {localName? : 'span' | 'input'})) => INodeTemplate<HTMLSpanElement>] => {
 
   let [state,callback] = useState<T>(data);
-  let stateElement = (template?:ConnectorTemplate<HTMLSpanElement> & {localName? : 'span' | 'input'}):NodeTemplate<any> => {
+  let stateElement = (template?:IConnectorTemplate<HTMLSpanElement> & {localName? : 'span' | 'input'}):INodeTemplate<any> => {
 
     let localName = ( template && template.localName ? template.localName : 'span' );
 
     return {
       localName : localName,
-      attr : { ...( template && template.attr ? template.attr : ( localName == 'span' ? { text : state.value as string } : {})) },
+      attr : { ...( template && template.attr ? template.attr : ( localName == 'span' ? { text : state.value as string } : {})) } as any,
       childrens : [ ...( template && template.childrens ? template.childrens : []) ],
       proto : { ...( template && template.proto ? template.proto : {
         ...( localName == 'input' ? { value : state.value } : {} ),

@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.elementState = void 0;
-const dist_1 = require("../modules/states/dist");
+const states_1 = require("../modules/states");
 const elementState = (data) => {
-    let [state, callback] = (0, dist_1.useState)(data);
+    let [state, callback] = (0, states_1.useState)(data);
     let stateElement = (template) => {
         let localName = (template && template.localName ? template.localName : 'span');
         return {

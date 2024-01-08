@@ -1,6 +1,7 @@
-import { PageHandler } from "thorium-core";
+import { CssObject, PageHandler, StyleProxy } from "thorium-core";
 import * as Context from 'thorium-store-context';
 import * as UUID from 'thorium-huid';
+import { TState } from 'thorium-states';
 import { preload, PreloadStack, PreloadModule } from './preload';
 export { preload, PreloadStack, PreloadModule, };
 declare namespace Thorium {
@@ -9,6 +10,7 @@ declare namespace Thorium {
     const context: typeof Context;
     const uuid: typeof UUID;
 }
+export declare function preloadStyle<T extends string[]>(cssObject: CssObject<T>): TState<StyleProxy<T>>;
 /**
  * The `useState` function is a TypeScript function that sets a value in the root context and returns
  * the updated state.

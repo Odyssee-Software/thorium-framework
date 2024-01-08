@@ -1,5 +1,5 @@
-import { State } from "../modules/states/dist";
-import { ConnectorTemplate, NodeTemplate } from "thorium-core";
-export declare const elementState: <T>(data: any) => [State<T>, (value: T) => T, (template?: (ConnectorTemplate<HTMLParagraphElement> & {
+import { State } from "../modules/states";
+import { IConnectorTemplate, INodeTemplate } from "thorium-core";
+export declare const elementState: <T>(data: any) => [State<T>, (value: T) => T, (template?: (IConnectorTemplate<HTMLParagraphElement> & {
     localName?: 'span' | 'input';
-})) => NodeTemplate<HTMLSpanElement>];
+})) => INodeTemplate<HTMLSpanElement>];
