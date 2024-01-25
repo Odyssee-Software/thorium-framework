@@ -1,5 +1,12 @@
 # thorium-framework
 
+### Thorium-cli
+- [CLI](https://github.com/Odyssee-Software/thorium-cli)
+
+### Thorium-server
+- [server](https://github.com/Odyssee-Software/thorium-server)
+    - [server-middleware-factory](https://github.com/Odyssee-Software/router-middleware-factory)
+
 ## Starters
 
 ### Web
@@ -11,6 +18,7 @@
 
 ### Desktop
 - [thorino](https://github.com/Odyssee-Software/thorino-starter)
+    - [thorino-extension](https://github.com/Odyssee-Software/thorino-ipc-extension)
 
 ### Les exemples suivant sont en cour d'écriture : 
 
