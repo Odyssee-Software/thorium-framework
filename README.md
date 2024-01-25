@@ -20,6 +20,9 @@
 - [thorino](https://github.com/Odyssee-Software/thorino-starter)
     - [thorino-extension](https://github.com/Odyssee-Software/thorino-ipc-extension)
 
+### Component lib
+- [components](https://github.com/Odyssee-Software/thorium-components)
+
 ### Les exemples suivant sont en cour d'écriture : 
 
 * 		Création de composants réutilisables :
