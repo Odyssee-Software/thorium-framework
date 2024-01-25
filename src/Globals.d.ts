@@ -12,6 +12,9 @@ declare interface JSXIntrinsicElement {
   h2: import('thorium-core').JSXNodeTemplate<T>;
   h3: import('thorium-core').JSXNodeTemplate<T>;
   h4: import('thorium-core').JSXNodeTemplate<T>;
+  p: import('thorium-core').JSXNodeTemplate<T>;
+  span: import('thorium-core').JSXNodeTemplate<T>;
+  customElement: import('thorium-core').JSXNodeTemplate<T>;
 
 }
 

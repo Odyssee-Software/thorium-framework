@@ -1,6 +1,18 @@
 # thorium-framework
 
-Les exemples suivant sont en cour d'écriture : 
+## Starters
+
+### Web
+- [javascript](https://github.com/Odyssee-Software/thorium-framework-javascript-starter)
+- [jsx](https://github.com/Odyssee-Software/thorium-framework-jsx-starter)
+- [typescrtipt](https://github.com/Odyssee-Software/thorium-framework-typescript-starter)
+- [tsx](https://github.com/Odyssee-Software/thorium-framework-tsx-starter)
+- [tsx + server](https://github.com/Odyssee-Software/thorium-framework-tsx-server-starter)
+
+### Desktop
+- [thorino](https://github.com/Odyssee-Software/thorino-starter)
+
+### Les exemples suivant sont en cour d'écriture : 
 
 * 		Création de composants réutilisables :
     * Montrer comment créer des composants de manière standard en utilisant l'objet JavaScript.
