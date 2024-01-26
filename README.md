@@ -2,6 +2,8 @@
 
 ### Thorium-cli
 - [CLI](https://github.com/Odyssee-Software/thorium-cli)
+    - [thorium-transform-plugin](https://github.com/Odyssee-Software/thorium-transform-plugin)
+    - [thorium-packager](https://github.com/Odyssee-Software/thorium-packager)
 
 ### Thorium-server
 - [server](https://github.com/Odyssee-Software/thorium-server)
@@ -20,8 +22,20 @@
 - [thorino](https://github.com/Odyssee-Software/thorino-starter)
     - [thorino-extension](https://github.com/Odyssee-Software/thorino-ipc-extension)
 
-### Component lib
+### Modules du framework
+- [thorium-core](https://github.com/Odyssee-Software/thorium-core)
+- [thorium-states](https://github.com/Odyssee-Software/thorium-states)
+- [thorium-uuid](https://github.com/Odyssee-Software/thorium-uuid)
+- [thorium-store-context](https://github.com/Odyssee-Software/thorium-store-context)
+
+## Component lib
 - [components](https://github.com/Odyssee-Software/thorium-components)
+
+## Extension for browser
+- [devtools](https://github.com/Odyssee-Software/thorium-devtool)
+
+## Exemples
+- [Editor](https://github.com/Odyssee-Software/editor-sample)
 
 ### Les exemples suivant sont en cour d'écriture : 
 
