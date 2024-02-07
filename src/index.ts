@@ -24,6 +24,13 @@ namespace Thorium{
 
 }
 
+/**
+ * La fonction `preloadStyle` précharge un objet feuille de style CSS et renvoie un objet d'état avec
+ * une fonction mutateur pour accéder aux styles.
+ * @param cssObject - Le paramètre `cssObject` est un objet qui représente les styles CSS à précharger.
+ * Il doit avoir la structure suivante :
+ * @returns La fonction `preloadStyle` renvoie le premier élément du tableau `state.mutator`.
+ */
 export function preloadStyle< T extends string[] >( cssObject:CssObject<T> ):TState< StyleProxy< T > >{
   
   let stylesheetId = UUID.uuid.v4();
@@ -60,6 +67,11 @@ export const useState = <T>( key:string , value:T ) => {
 let _onRenderPage = null;
 let _onHashChange = null;
 
+/**
+ * La fonction `renderPage` vérifie le hachage d'URL actuel et l'utilise pour déterminer quelle page
+ * afficher, en fonction d'un ensemble d'itinéraires reconnus.
+ * @returns le résultat de l'appel de la fonction `handler` de l'objet `baseRouteHandler`.
+ */
 const renderPage = () => {
 
   let { location } = window;
@@ -82,6 +94,10 @@ const renderPage = () => {
 
 let currentPageId = null;
 
+/**
+ * La fonction `onHashChange` supprime l'élément de page actuel du DOM, appelle une fonction de rappel
+ * `_onHashChange` et restitue un nouvel élément de page basé sur la valeur de hachage actuelle.
+ */
 const onHashChange = () => {
 
   let f = DOM.virtual.getElementByElementId(currentPageId);
@@ -96,6 +112,14 @@ export interface PagesAPI extends PageHandler{
   onRenderPage():void;
 }
 
+/**
+ * La fonction exporte un objet PagesAPI qui agit comme proxy pour l'objet Core.pages, permettant une
+ * gestion personnalisée des événements onHashChange et onRenderPage.
+ * @returns un objet Proxy qui encapsule l'objet `pages` du module `Core`. L'objet Proxy intercepte les
+ * opérations d'accès aux propriétés et d'affectation sur l'objet `pages`. Si une propriété est accédée
+ * et existe sur l'objet `pages`, elle est renvoyée. Si la propriété n'existe pas sur l'objet `pages`,
+ * mais que la clé de propriété est "onHashChange"
+ */
 export function pages():PagesAPI{
 
   let { pages } = Core;

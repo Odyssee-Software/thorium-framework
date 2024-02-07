@@ -15,6 +15,7 @@ declare interface JSXIntrinsicElement {
   p: import('thorium-core').JSXNodeTemplate<T>;
   span: import('thorium-core').JSXNodeTemplate<T>;
   customElement: import('thorium-core').JSXNodeTemplate<T>;
+  Patern:import('thorium-core').ICustomElementPatern<X,Y>;
 
 }
 

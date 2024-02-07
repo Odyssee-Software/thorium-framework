@@ -53,6 +53,13 @@ var Thorium;
     if ('thorium' in window == false)
         window['thorium'] = Thorium;
 })(Thorium || (Thorium = {}));
+/**
+ * La fonction `preloadStyle` précharge un objet feuille de style CSS et renvoie un objet d'état avec
+ * une fonction mutateur pour accéder aux styles.
+ * @param cssObject - Le paramètre `cssObject` est un objet qui représente les styles CSS à précharger.
+ * Il doit avoir la structure suivante :
+ * @returns La fonction `preloadStyle` renvoie le premier élément du tableau `state.mutator`.
+ */
 function preloadStyle(cssObject) {
     let stylesheetId = UUID.uuid.v4();
     let { state, setter, subscribe } = (0, exports.useState)(stylesheetId, {});
@@ -84,6 +91,11 @@ const useState = (key, value) => {
 exports.useState = useState;
 let _onRenderPage = null;
 let _onHashChange = null;
+/**
+ * La fonction `renderPage` vérifie le hachage d'URL actuel et l'utilise pour déterminer quelle page
+ * afficher, en fonction d'un ensemble d'itinéraires reconnus.
+ * @returns le résultat de l'appel de la fonction `handler` de l'objet `baseRouteHandler`.
+ */
 const renderPage = () => {
     let { location } = window;
     let { hash } = location;
@@ -98,6 +110,10 @@ const renderPage = () => {
     }
 };
 let currentPageId = null;
+/**
+ * La fonction `onHashChange` supprime l'élément de page actuel du DOM, appelle une fonction de rappel
+ * `_onHashChange` et restitue un nouvel élément de page basé sur la valeur de hachage actuelle.
+ */
 const onHashChange = () => {
     let f = thorium_core_1.DOM.virtual.getElementByElementId(currentPageId);
     if (f)
@@ -106,6 +122,14 @@ const onHashChange = () => {
         _onHashChange();
     currentPageId = renderPage();
 };
+/**
+ * La fonction exporte un objet PagesAPI qui agit comme proxy pour l'objet Core.pages, permettant une
+ * gestion personnalisée des événements onHashChange et onRenderPage.
+ * @returns un objet Proxy qui encapsule l'objet `pages` du module `Core`. L'objet Proxy intercepte les
+ * opérations d'accès aux propriétés et d'affectation sur l'objet `pages`. Si une propriété est accédée
+ * et existe sur l'objet `pages`, elle est renvoyée. Si la propriété n'existe pas sur l'objet `pages`,
+ * mais que la clé de propriété est "onHashChange"
+ */
 function pages() {
     let { pages } = thorium_core_1.default;
     return new Proxy(pages, {
