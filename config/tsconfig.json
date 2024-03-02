@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "jsx": "preserve",
-    "module": "ES2020",
-    "target": "ES2016",
+    "module": "CommonJS",
+    "target": "ES6",
     "declaration": true,
     "sourceMap": true,
     "removeComments": false,
@@ -12,6 +12,9 @@
     "strict": true,
     "noImplicitAny": false,
     "baseUrl": ".",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "lib": ["ES2017", "dom", "esnext"]
   },
   "files": ["../src/Globals.d.ts"],
   "include": ["../src/Globals.d.ts"],

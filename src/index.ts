@@ -1,4 +1,4 @@
-import Core , { CssObject, DOM, PageHandler, StyleProxy , DesignSystem } from "thorium-core";
+import Core , { CssObject, DOM, PageHandler, StyleProxy , DesignSystem , Fragment } from "thorium-core";
 import * as Context from 'thorium-store-context';
 import { applicationContext , IStoreState } from "thorium-store-context";
 import * as UUID from 'thorium-huid';
@@ -61,7 +61,7 @@ export function preloadStyle< T extends string[] >( cssObject:CssObject<T> ):TSt
  * @returns the value of `rootContext().set(key, value)` casted as `IStoreState<T>`.
  */
 export const useState = <T>( key:string , value:T ) => {
-  return applicationContext().set( key , value ) as IStoreState<T>;
+  return applicationContext().set( key , value ) as IStoreState<T>["mutator"];
 }
 
 let _onRenderPage = null;

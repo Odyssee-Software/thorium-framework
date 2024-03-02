@@ -27,7 +27,7 @@ export declare function preloadStyle<T extends string[]>(cssObject: CssObject<T>
  * variable. It can be of any type, as it is defined as a generic type `<T>`.
  * @returns the value of `rootContext().set(key, value)` casted as `IStoreState<T>`.
  */
-export declare const useState: <T>(key: string, value: T) => Context.IStoreState<T>;
+export declare const useState: <T>(key: string, value: T) => TState<T>["mutator"];
 export interface PagesAPI extends PageHandler {
     onHashChange(): void;
     onRenderPage(): void;
